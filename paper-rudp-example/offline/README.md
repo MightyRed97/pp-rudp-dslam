@@ -24,7 +24,7 @@ It also contains these scripts:
 
 ## Getting the kit
 
-- **From GitHub.** The repository's release has `offline-kit-windows-x64.zip`. Unzip it at the root of the repository, and it fills `paper-rudp-example/offline/`. The zip has everything except `android-sdk/`, because Google's Android SDK licence does not allow passing the SDK on. See the next section.
+- **From GitHub.** The repository's [release](https://github.com/MightyRed97/pp-rudp-dslam/releases/latest) has `offline-kit-windows-x64.zip`. Unzip it at the root of the repository, and it fills `paper-rudp-example/offline/`. The zip has everything except `android-sdk/`, because Google's Android SDK licence does not allow passing the SDK on. See the next section.
 - **Making it yourself.** On a Windows computer with internet access, run:
 
   ```
@@ -37,13 +37,24 @@ It also contains these scripts:
 
 You need the SDK only to build the app; running the relay and installing the APK don't need it.
 
-Copy these folders from an Android SDK into `offline\android-sdk\`, keeping their paths:
-- `platforms\android-35`
-- `build-tools\34.0.0`
-- `platform-tools`
-- `licenses`
+The build needs two packages from the SDK:
+- **an SDK Platform**: 35, 36 or 34 (the folder `platforms\android-35`, `platforms\android-36` or `platforms\android-34`);
+- **Build-Tools** 34.0.0 or newer (a folder under `build-tools`, such as `build-tools\34.0.0`).
 
-Android Studio keeps its SDK in `%LOCALAPPDATA%\Android\Sdk`. Instead of copying, you can set `ANDROID_HOME` to an SDK that has these packages.
+It uses Platform 35 and Build-Tools 34.0.0 when they are there. Otherwise it takes Platform 36 or 34, and the oldest Build-Tools newer than 34.0.0, and prints which ones it took. Other versions cannot be used:
+- Platform 37 and later are too new for the Android Gradle plugin 8.7.3 of this build;
+- Build-Tools older than 34.0.0 are too old for it;
+- the AndroidX libraries need Platform 34 or later.
+
+Having other versions installed as well does no harm.
+
+To give the build an SDK, do one of these:
+- set `ANDROID_HOME` to an SDK that has these packages. Android Studio keeps its SDK in `%LOCALAPPDATA%\Android\Sdk`;
+- copy the two folders into `offline\android-sdk\`, keeping their paths, for example `offline\android-sdk\platforms\android-36` and `offline\android-sdk\build-tools\37.0.0`.
+
+`build-app.bat` uses `offline\android-sdk` when it has a platform in it, and `ANDROID_HOME` otherwise. If Android Studio has written `android\local.properties`, the `sdk.dir` in it comes first.
+
+The build needs neither `platform-tools` nor `licenses`. `install-app.bat` uses the adb in `offline\android-sdk\platform-tools` if it is there, and the adb on your `PATH` otherwise.
 
 ## Use
 
@@ -73,3 +84,5 @@ The Gradle distribution and `m2repository/` work on Linux and macOS as well; the
 - **Keep the Gradle home on a short path.** The default `%USERPROFILE%\.gradle` is fine. Gradle unpacks `aapt2.exe` deep inside its home, and Windows cannot start a program whose path is longer than 260 characters. The build then stops with "AAPT2 ... Daemon startup failed".
 - **The APK is a debug build** signed with a development key. To install a build of your own over it, uninstall it first.
 - **The kit was tested offline.** The app was built, tested and linted with `--offline` and an empty Gradle home, and nothing was downloaded. `test-server.bat` passed with the kit's Node.js.
+- **Other SDK versions were tested offline too.** With Platform 34, 35 or 36, and Build-Tools 34.0.0, 35.0.0 or 37.0.0, the app built and passed its 18 unit tests, with no change to the project.
+- **Two warnings are harmless.** With Platform 36, the plugin warns that it was tested up to compileSdk 35; the build works all the same. A warning that "this version only understands SDK XML versions up to 3" means that newer Android tools installed the SDK packages.

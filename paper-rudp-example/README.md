@@ -39,7 +39,7 @@ Type `/to bob` to choose the recipient, then any line to send it as a message. `
 
 ## Build and run the Android app
 
-1. In Android Studio, choose File > Open and select the `android` folder. Android Studio downloads Gradle 8.9 and the Android Gradle plugin 8.7.3 by itself. From a terminal, `android\gradlew.bat assembleDebug` (or `./gradlew` on Linux and macOS) builds the APK, given a JDK 17 and the Android SDK.
+1. In Android Studio, choose File > Open and select the `android` folder. Android Studio downloads Gradle 8.9 and the Android Gradle plugin 8.7.3 by itself. From a terminal, `android\gradlew.bat assembleDebug` (or `./gradlew` on Linux and macOS) builds the APK, given a JDK 17 and the Android SDK. The build uses SDK Platform 35 and Build-Tools 34.0.0. If they are not installed, it uses Platform 36 or 34 and newer Build-Tools when the SDK has them, so it does not have to download anything (see [`offline/README.md`](offline/README.md#the-android-sdk-on-the-offline-computer)).
 2. Start the relay on your computer, then run the app on an emulator. An emulator reaches the computer it runs on at 10.0.2.2, so the default server, `10.0.2.2:5070`, works as it is.
 3. Enter your name (for example `alice`) and press **Connect**. The status line then shows "registered as alice". Enter the recipient (for example `bob`), then type a message, or press **File** to choose a file.
 
@@ -57,7 +57,7 @@ The app was tested on an Android 15 (API 35) emulator against the relay, with a 
 
 ## Running without internet
 
-The [`offline/`](offline/) folder holds a kit for a Windows computer without internet access: a JDK, Gradle, Node.js, every library the build uses, and the app ready to install. With it you can start the relay (`offline\run-server.bat`), install the app (`offline\install-app.bat`), and build and test the app (`offline\build-app.bat`). The large parts are not in the repository: download them from the repository's release, or make them with `offline\tools\make-kit.ps1`. See [`offline/README.md`](offline/README.md).
+The [`offline/`](offline/) folder holds a kit for a Windows computer without internet access: a JDK, Gradle, Node.js, every library the build uses, and the app ready to install. With it you can start the relay (`offline\run-server.bat`), install the app (`offline\install-app.bat`), and build and test the app (`offline\build-app.bat`) with an Android SDK that has Platform 34, 35 or 36. The large parts are not in the repository: download them from the repository's [release](https://github.com/MightyRed97/pp-rudp-dslam/releases/latest), or make them with `offline\tools\make-kit.ps1`. See [`offline/README.md`](offline/README.md).
 
 ## Tests
 

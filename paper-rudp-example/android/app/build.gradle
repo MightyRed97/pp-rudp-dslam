@@ -2,9 +2,41 @@ plugins {
     id 'com.android.application'
 }
 
+// The app is built with SDK Platform 35 and Build-Tools 34.0.0. When the SDK lacks one of them, as on a
+// computer without internet access where Gradle cannot download it, the build takes an installed one
+// that works instead: Platform 36 or 34, and the oldest Build-Tools newer than 34.0.0. The Android Gradle
+// plugin 8.7.3 reads no Platform 37 or later and no Build-Tools older than 34.0.0, and the AndroidX
+// libraries need Platform 34 or later.
+def sdkDir = {
+    def props = new Properties()
+    def local = rootProject.file('local.properties')
+    if (local.isFile()) local.withInputStream { props.load(it) }
+    def path = props.getProperty('sdk.dir') ?: System.getenv('ANDROID_HOME') ?: System.getenv('ANDROID_SDK_ROOT')
+    path ? new File(path) : null
+}()
+def platformSdk = [35, 36, 34].find { sdkDir == null || new File(sdkDir, "platforms/android-$it/android.jar").isFile() }
+if (platformSdk == null) {
+    logger.warn("The Android SDK in $sdkDir has none of SDK Platforms 35, 36 and 34, and the build needs one of them. " +
+        'Platform 37 and later are too new for the Android Gradle plugin 8.7.3.')
+    platformSdk = 35
+} else if (platformSdk != 35) {
+    logger.lifecycle("SDK Platform 35 is not installed; the app is compiled against Platform $platformSdk.")
+}
+def revision = { String v -> v.tokenize('.').inject(0) { n, part -> n * 1000 + (part as int) } }
+def buildTools = null
+if (sdkDir != null && !new File(sdkDir, 'build-tools/34.0.0').isDirectory()) {
+    buildTools = (new File(sdkDir, 'build-tools').listFiles() ?: new File[0])
+        .findAll { it.name ==~ /\d+\.\d+\.\d+/ && revision(it.name) > revision('34.0.0') }
+        .findAll { new File(it, 'package.xml').isFile() || new File(it, 'source.properties').isFile() }
+        .collect { it.name }
+        .min { revision(it) }
+    if (buildTools != null) logger.lifecycle("Build-Tools 34.0.0 is not installed; the build uses Build-Tools $buildTools.")
+}
+
 android {
     namespace 'com.example.irudpchat'
-    compileSdk 35
+    compileSdk platformSdk
+    if (buildTools != null) buildToolsVersion buildTools
 
     defaultConfig {
         applicationId 'com.example.irudpchat'
