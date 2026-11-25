@@ -1,0 +1,10 @@
+Citation:
+Duan, H., Zhang, J., Zhang, L., Wu, Y., Lv, T., Zeng, Y., Cheng, X., 2025. A home broadband maintenance and installation solution leveraging LLM-agent technology. In: Proceedings of the 2025 IEEE 8th Information Technology and Mechatronics Engineering Conference (ITOEC), pp. 1-6.
+
+Link:
+https://doi.org/10.1109/ITOEC63606.2025.10968880
+
+Verification and availability:
+Paywalled (IEEE). Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: an agent built on a large language model that helps home broadband maintenance staff locate problems; the authors note hallucination and difficulty with complex calculations (Sections 1 and 2.4).

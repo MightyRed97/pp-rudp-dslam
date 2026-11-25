@@ -1,0 +1,10 @@
+Citation:
+Galli, S., Kerpez, K.J., Mariotte, H., Moulin, F., 2016. PLC-to-DSL interference: statistical model and impact on VDSL2, vectoring, and G.fast. IEEE Journal on Selected Areas in Communications 34 (7), 1992-2005.
+
+Link:
+https://doi.org/10.1109/JSAC.2016.2566118 ; open preprint: https://arxiv.org/abs/1509.00453
+
+Verification and availability:
+The published version is under IEEE copyright, and the arXiv preprint is distributed under the arXiv non-exclusive licence, which does not permit redistribution, so the PDF is not included here; read it from the arXiv link. Verified against the publisher record (Crossref metadata: authors, title, journal, volume, issue, pages) and the full text of the preprint.
+
+Used for: the measured coupling between power line cables and twisted pairs; interference from broadband power line communication has a small average impact on the rate of VDSL2, vectored VDSL2 and G.fast, strong couplings degrade a line substantially, and the impact varies with loop length and with the use of vectoring (Sections 1 and 2.1).

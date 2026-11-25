@@ -1,0 +1,9 @@
+Varghese, G., Lauck, A., 1997. Hashed and hierarchical timing wheels: efficient data structures for implementing a timer facility. IEEE/ACM Transactions on Networking 5 (6), 824–834.
+
+DOI: https://doi.org/10.1109/90.650142
+
+Verification: The DOI record on Crossref confirms the title, authors, venue and year (checked 2026-11-24).
+The full text could not be downloaded automatically (paywalled, or the publisher blocks automated requests).
+
+Abstract (OpenAlex record of the IEEE publication, retrieved 2026-11-25), excerpt:
+Conventional algorithms to implement an operating system timer module take O(n) time to start or maintain a timer, where n is the number of outstanding timers: this is expensive for large n. This paper shows that by using a circular buffer or timing wheel, it takes O(1) time to start, stop, and maintain timers within the range of the wheel. Two extensions for larger values of the interval are described. In the first, the timer interval is hashed into a slot on the timing wheel. In the second, a hierarchy of timing wheels with different granularities is used to span a greater range of intervals. ... Our new implementation can support thousands of outstanding timers without much overhead.

@@ -1,0 +1,7 @@
+Miao, R., Zhu, L., Ma, S., Qian, K., Zhuang, S., Li, B., et al., 2022. From Luna to Solar: the evolutions of the compute-to-storage networks in Alibaba Cloud. In: Proceedings of the ACM SIGCOMM 2022 Conference (SIGCOMM '22), pp. 753–766.
+
+DOI: https://doi.org/10.1145/3544216.3544238
+
+Verification: checked against the PDF and the DOI record on Crossref (2026-11-24).
+The PDF is not included here because the publisher holds the copyright (© 2022 ACM). It can be read at:
+https://doi.org/10.1145/3544216.3544238

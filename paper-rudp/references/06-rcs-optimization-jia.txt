@@ -1,0 +1,11 @@
+Jia, X., 2024. A 5G RCS system optimization method for large-scale users. In: Proceedings of the 2024 6th International Conference on Electronics and Communication, Network and Computer Technology (ECNCT), pp. 437–442.
+
+DOI: https://doi.org/10.1109/ECNCT63103.2024.10704477
+
+Verification: The DOI record on Crossref confirms the title, authors, venue and year (checked 2026-11-24).
+The full text could not be downloaded automatically (paywalled, or the publisher blocks automated requests).
+
+Affiliation of the author (OpenAlex record): China Telecom Corporation Limited Beijing Research Institute, Beijing, China.
+
+Abstract (OpenAlex record of the IEEE publication, retrieved 2026-11-25):
+It is a huge challenge to build a Rich Communication Suite(RCS) system that can stably support huge number of users. we present a RCS system that can effectively and reliably cater to a massive user. Initially, we designed a highly-efficient Device Management (DM) module that can accurately allocate users to different regions. We then established server clusters in each region, utilizing the direct routing mode with Linux Virtual Server (LVS) to ensure even distribution of each request amongst the servers. Furthermore, we optimized the message-forwarding process in the system by revising the SIP registration and message processes, which reduced forwarding time and saved memory space. Our results indicate that the optimized system has a ten-fold faster processing speed and eight-fold higher load capacity than the original system, making it a stable solution for supporting a large user.

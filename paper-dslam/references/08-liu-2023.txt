@@ -1,0 +1,10 @@
+Citation:
+Liu, W.-X., Liang, C., Cui, Y., Cai, J., Luo, J.-M., 2023. Programmable data plane intelligence: advances, opportunities, and challenges. IEEE Network 37 (5), 122-128.
+
+Link:
+https://doi.org/10.1109/MNET.124.2200113
+
+Verification and availability:
+Paywalled (IEEE). Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: machine learning on programmable data planes and the difficulties caused by their limited capabilities (Sections 1 and 2.2).

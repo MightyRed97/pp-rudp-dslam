@@ -1,0 +1,7 @@
+Meng, Z., Kong, X., Chen, J., Wang, B., Xu, M., Han, R., et al., 2024. Hairpin: rethinking packet loss recovery in edge-based interactive video streaming. In: Proceedings of the 21st USENIX Symposium on Networked Systems Design and Implementation (NSDI 24), pp. 907–926.
+
+URL: https://www.usenix.org/conference/nsdi24/presentation/meng
+
+Verification: checked against the PDF on the USENIX conference page (2026-11-24).
+The PDF is not included here because no licence for redistribution is stated (USENIX open access; the authors keep the copyright). It can be read at:
+https://www.usenix.org/conference/nsdi24/presentation/meng

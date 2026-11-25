@@ -1,0 +1,10 @@
+Citation:
+Figueiredo, R., Woesner, H., Kassler, A., Karl, H., 2025. Leveraging commodity NICs for accelerating hierarchical QoS for broadband access networks. In: Proceedings of the ACM SIGCOMM 2025 Posters and Demos, pp. 4-6.
+
+Link:
+https://doi.org/10.1145/3744969.3748393
+
+Verification and availability:
+Listed as open access in the ACM Digital Library, but the ACM site refused an automated download; open the DOI link in a browser. Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: partial offload of the HQoS tree of a software broadband network gateway to the hardware queues of commodity NICs, extending the QoS features of DPDK, with up to 50 times lower average HQoS processing latency (Sections 2.3 and 2.4).

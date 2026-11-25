@@ -1,0 +1,10 @@
+Citation:
+ITU-T, 2019. Self-FEXT cancellation (vectoring) for use with VDSL2 transceivers. Recommendation ITU-T G.993.5 (02/2019). International Telecommunication Union, Geneva.
+
+Link:
+https://www.itu.int/rec/T-REC-G.993.5/en
+
+Verification and availability:
+Edition 02/2019 is in force (with Corrigendum 1 of 03/2020). Its scope is the cancellation of self-FEXT in the downstream and upstream directions. Free from ITU-T, but the ITU web server rejected automated requests; download it from the link in a browser.
+
+Used for: vectoring of the VDSL2 lines of a vectored group (Sections 1, 2.1 and 3.2).

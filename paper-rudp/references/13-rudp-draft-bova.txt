@@ -1,0 +1,7 @@
+Bova, T., Krivoruchka, T., 1999. Reliable UDP Protocol. Internet-Draft draft-ietf-sigtran-reliable-udp-00, Internet Engineering Task Force.
+
+URL: https://datatracker.ietf.org/doc/draft-ietf-sigtran-reliable-udp/00/
+
+Verification: checked against the text in the IETF archive (2026-11-24).
+The PDF is not included here because the 1999 draft states no permission to copy it. It can be read at:
+https://www.ietf.org/archive/id/draft-ietf-sigtran-reliable-udp-00.txt

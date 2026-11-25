@@ -1,0 +1,10 @@
+Citation:
+Chen, T., Guestrin, C., 2016. XGBoost: a scalable tree boosting system. In: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, pp. 785-794.
+
+Link:
+https://doi.org/10.1145/2939672.2939785 ; open preprint: https://arxiv.org/abs/1603.02754
+
+Verification and availability:
+The copyright of the published version is held by the authors, and the arXiv preprint is distributed under the arXiv non-exclusive licence, which does not permit redistribution, so the PDF is not included here; read it from the arXiv link. Verified against the publisher record (Crossref metadata: authors, title, proceedings, pages) and the full text of the preprint.
+
+Used for: an efficient implementation of gradient-boosted decision trees for tabular data (Sections 2.4 and 5.3).

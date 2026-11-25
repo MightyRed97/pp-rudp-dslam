@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF90CAF9</color>
+    <color name="primary_dark">#FF0D47A1</color>
+    <color name="bubble_in">#FF2B2F36</color>
+    <color name="bubble_out">#FF1E3A5F</color>
+    <color name="bubble_info">#00000000</color>
+</resources>

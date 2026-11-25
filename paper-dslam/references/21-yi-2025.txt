@@ -1,0 +1,10 @@
+Citation:
+Yi, G., Wang, M., Zeng, C., Yang, J., Li, F., Zhang, L., Cui, Y., 2025. xWitch: towards fast and accurate performance evaluation for hierarchical QoS. In: Proceedings of the 2025 IEEE/ACM 33rd International Symposium on Quality of Service (IWQoS), pp. 1-10.
+
+Link:
+https://doi.org/10.1109/IWQoS65803.2025.11263999
+
+Verification and availability:
+Paywalled (IEEE). Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: a sequence-to-sequence model for packet-level performance evaluation of HQoS configurations, which are widely used in commercial routers, with an average latency error below 3% on short sequences (Sections 2.3 and 2.4).

@@ -1,0 +1,10 @@
+Citation:
+ITU-T, 2019. Very high speed digital subscriber line transceivers 2 (VDSL2). Recommendation ITU-T G.993.2 (02/2019). International Telecommunication Union, Geneva.
+
+Link:
+https://www.itu.int/rec/T-REC-G.993.2-201902-I/en
+
+Verification and availability:
+Edition 02/2019 is listed by ITU-T as in force; it consolidates the 2011 edition with all later amendments and corrigenda. ITU-T Recommendations are free to download, but the ITU web server rejected automated requests, so the PDF was not saved; download it from the link in a browser.
+
+Used for: VDSL2 as the line technology (Sections 1 and 2.1); profile 17a and its upper frequency of 17.664 MHz; the 2019 edition consolidating the amendments made since 2011.

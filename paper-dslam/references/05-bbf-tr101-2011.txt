@@ -1,0 +1,10 @@
+Citation:
+Broadband Forum, 2011. Migration to Ethernet-based broadband aggregation. Technical Report TR-101, Issue 2. Broadband Forum, Fremont, CA.
+
+Link:
+https://www.broadband-forum.org/technical/download/TR-101_Issue-2.pdf
+
+Verification and availability:
+Issue 2 is dated July 2011 (Issue 1 of April 2006 was titled Migration to Ethernet Based DSL Aggregation). The Broadband Forum site returned an HTML page instead of the PDF to an automated request; download it from the technical reports page of the Forum.
+
+Used for: the access-node functions required for Ethernet-based aggregation, namely the 1:1 and N:1 VLAN models, IGMP snooping with proxy reporting, the PPPoE intermediate agent, the DHCP relay agent with line identification, and priority handling (Sections 1, 2.2, 2.3, 3.1, 4.1 and 4.4).

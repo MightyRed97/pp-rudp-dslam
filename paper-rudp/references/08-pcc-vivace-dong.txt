@@ -1,0 +1,7 @@
+Dong, M., Meng, T., Zarchy, D., Arslan, E., Gilad, Y., Godfrey, P.B., et al., 2018. PCC Vivace: Online-learning congestion control. In: Proceedings of the 15th USENIX Symposium on Networked Systems Design and Implementation (NSDI '18), pp. 343–356.
+
+URL: https://www.usenix.org/conference/nsdi18/presentation/dong
+
+Verification: checked against the PDF on the USENIX conference page (2026-11-24).
+The PDF is not included here because no licence for redistribution is stated (USENIX open access; the authors keep the copyright). It can be read at:
+https://www.usenix.org/conference/nsdi18/presentation/dong

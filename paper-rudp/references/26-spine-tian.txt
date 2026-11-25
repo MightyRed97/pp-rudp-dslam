@@ -1,0 +1,7 @@
+Tian, H., Liao, X., Zeng, C., Zhang, J., Chen, K., 2022. Spine: An efficient DRL-based congestion control with ultra-low overhead. In: Proceedings of the 18th International Conference on emerging Networking EXperiments and Technologies (CoNEXT '22), pp. 261–275.
+
+DOI: https://doi.org/10.1145/3555050.3569125
+
+Verification: checked against the PDF and the DOI record on Crossref (2026-11-24).
+The PDF is not included here because the publisher holds the copyright (© 2022 ACM). It can be read at:
+https://doi.org/10.1145/3555050.3569125

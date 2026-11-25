@@ -1,0 +1,7 @@
+Chen, T., Guestrin, C., 2016. XGBoost: A scalable tree boosting system. In: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD '16), pp. 785–794.
+
+DOI: https://doi.org/10.1145/2939672.2939785
+
+Verification: checked against the arXiv version and the DOI record on Crossref (2026-11-25).
+The PDF is not included here because it carries the ACM notice that permits personal or classroom use only. It can be read at:
+https://arxiv.org/abs/1603.02754

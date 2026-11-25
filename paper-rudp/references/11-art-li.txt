@@ -1,0 +1,7 @@
+Li, T., Liu, W., Ma, X., Zhu, S., Cao, J., Liu, S., et al., 2023. ART: adaptive retransmission for wide-area loss recovery in the wild. In: Proceedings of the 2023 IEEE 31st International Conference on Network Protocols (ICNP), pp. 1–11.
+
+DOI: https://doi.org/10.1109/icnp59255.2023.10355648
+
+Verification: checked against the PDF and the DOI record on Crossref (2026-11-24).
+The PDF is not included here because the publisher holds the copyright (© 2023 IEEE). It can be read at:
+https://doi.org/10.1109/icnp59255.2023.10355648

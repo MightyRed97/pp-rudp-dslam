@@ -1,0 +1,9 @@
+Chen, Y., Yan, J., Zhang, Y., Pu, L., 2026. WiLD: Learning-based wireless loss diagnosis for congestion control with ultra-low kernel overhead. IEEE Transactions on Network and Service Management 23, 2585–2597.
+
+DOI: https://doi.org/10.1109/TNSM.2026.3664422
+
+Verification: The DOI record on Crossref confirms the title, authors, venue and year (checked 2026-11-24).
+The full text could not be downloaded automatically (paywalled, or the publisher blocks automated requests).
+
+Abstract (OpenAlex record of the IEEE publication, retrieved 2026-11-25), excerpt:
+... we propose a simple yet effective learning-based wireless loss diagnosis (WiLD) solution for enhancing wireless congestion control. WiLD uses a neural network (NN) to accurately distinguish between wireless packet loss and congestion packet loss. To seamlessly cooperate with rule-based CCAs and make real-time decisions, we further implement WiLD in Linux kernel to avoid the frequent kernel-space communication. Specifically, we use a lightweight NN for inference and propose an integer quantization for WiLD deployment in various Linux versions. Real-world experiments and simulations demonstrate that WiLD can accurately differentiate the wireless and congestion packet loss with negligible CPU overhead (around 1% of WiLD vs. around 100% of learning-based algorithms such as Vivace and Aurora) and fast inference time (45% less compared to TensorFlow Lite).

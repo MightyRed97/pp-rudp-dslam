@@ -1,0 +1,10 @@
+Citation:
+Zhang, X., Cui, L., Tso, F.P., Jia, W., 2021. pHeavy: predicting heavy flows in the programmable data plane. IEEE Transactions on Network and Service Management 18 (4), 4353-4364.
+
+Link:
+https://doi.org/10.1109/TNSM.2021.3094514 ; repository copy (All Rights Reserved): https://figshare.com/articles/journal_contribution/pHeavy_Predicting_heavy_flows_in_the_programmable_data_plane/14888241
+
+Verification and availability:
+Paywalled (IEEE); the repository copy is marked All Rights Reserved and the repository refused an automated download. Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: pre-trained decision trees compiled into a P4 pipeline that predict heavy flows at line rate on a Tofino switch, with 85% accuracy after the first 5 packets of a flow and 98% after 20 (Section 2.2).

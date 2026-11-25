@@ -1,0 +1,10 @@
+Citation:
+Song, K.B., Chung, S.T., Ginis, G., Cioffi, J.M., 2002. Dynamic spectrum management for next-generation DSL systems. IEEE Communications Magazine 40 (10), 101-109.
+
+Link:
+https://doi.org/10.1109/MCOM.2002.1039864
+
+Verification and availability:
+Paywalled (IEEE). Kept as the unavoidable foundational reference for dynamic spectrum management. Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: dynamic spectrum management, in which DSL transmission adapts to the channel and to neighbouring systems instead of being designed for the worst case (Sections 1 and 2.1).

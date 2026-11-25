@@ -1,0 +1,16 @@
+{
+  "name": "irudp-chat-server",
+  "version": "1.0.0",
+  "description": "Example relay server for the paper: SIP-style chat and file transfer over IRUDP",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "client": "node client/cli.js",
+    "test": "node test/unit-test.js && node test/e2e-test.js",
+    "bench": "node test/bench.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

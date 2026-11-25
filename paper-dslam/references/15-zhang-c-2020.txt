@@ -1,0 +1,10 @@
+Citation:
+Zhang, C., Wang, D., Song, C., Wang, L., Song, J., Guan, L., Zhang, M., 2020. Interpretable learning algorithm based on XGBoost for fault prediction in optical network. In: Optical Fiber Communication Conference (OFC) 2020, paper Th1F.3.
+
+Link:
+https://doi.org/10.1364/OFC.2020.Th1F.3
+
+Verification and availability:
+Paywalled (Optica Publishing Group). Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: interpretable XGBoost fault prediction on actual optical network data with an accuracy of 99.72%, revealing the five features that contributed most to the faults (Sections 1 and 2.4).

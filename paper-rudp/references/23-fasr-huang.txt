@@ -1,0 +1,7 @@
+Huang, P., Chen, G., Zhang, X., Liu, C., Wang, H., Shen, H., et al., 2025. Fast and scalable selective retransmission for RDMA. In: Proceedings of IEEE INFOCOM 2025 – IEEE Conference on Computer Communications, pp. 1–10.
+
+DOI: https://doi.org/10.1109/infocom55648.2025.11044566
+
+Verification: checked against an author copy of the paper and the DOI record on Crossref (2026-11-24).
+The PDF is not included here because the publisher holds the copyright (IEEE). It can be read at:
+https://doi.org/10.1109/infocom55648.2025.11044566

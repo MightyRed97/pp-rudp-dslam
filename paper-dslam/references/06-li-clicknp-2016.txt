@@ -1,0 +1,10 @@
+Citation:
+Li, B., Tan, K., Luo, L., Peng, Y., Luo, R., Xu, N., Xiong, Y., Cheng, P., Chen, E., 2016. ClickNP: highly flexible and high performance network processing with reconfigurable hardware. In: Proceedings of the 2016 ACM SIGCOMM Conference, pp. 1-14.
+
+Link:
+https://doi.org/10.1145/2934872.2934897
+
+Verification and availability:
+The publisher version is not open access. Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: FPGA-accelerated network functions programmed in a high-level C-like language, with up to 200 million packets per second at latencies below 2 microseconds (Sections 1 and 2.2).

@@ -1,0 +1,10 @@
+Citation:
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., Liu, T.-Y., 2017. LightGBM: a highly efficient gradient boosting decision tree. In: Advances in Neural Information Processing Systems 30, pp. 3146-3154.
+
+Link:
+https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf
+
+Verification and availability:
+Freely readable in the NeurIPS proceedings, but no licence that permits redistribution is stated, so the PDF is not included here; read it from the link. Verified against the proceedings metadata (authors, title, volume, pages 3146-3154) and the full text.
+
+Used for: an efficient implementation of gradient-boosted decision trees with gradient-based one-side sampling and exclusive feature bundling (Sections 2.4 and 5.3).

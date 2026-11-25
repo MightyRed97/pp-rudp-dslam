@@ -1,0 +1,10 @@
+Citation:
+Friedman, J.H., 2002. Stochastic gradient boosting. Computational Statistics & Data Analysis 38 (4), 367-378.
+
+Link:
+https://doi.org/10.1016/S0167-9473(01)00065-2
+
+Verification and availability:
+Paywalled (Elsevier); an attempt to fetch the author's preprint copy failed. Kept as the unavoidable foundational reference for the boosting method used. Verified on 2026-11-25 against the publisher record (Crossref metadata: author, title, journal, volume, issue, pages).
+
+Used for: the stochastic form of gradient boosting, in which each tree is fitted to the negative gradient of the loss on a random subsample of the data, as implemented by the GradientBoostingClassifier of scikit-learn with subsample = 0.8 (Section 5.3, Eqs. (11) and (12), Listing 3).

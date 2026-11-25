@@ -1,0 +1,7 @@
+Zheng, Z., Ma, Y., Liu, Y., Yang, F., Li, Z., Zhang, Y., et al., 2021. XLINK: QoE-driven multi-path QUIC transport in large-scale video services. In: Proceedings of the 2021 ACM SIGCOMM 2021 Conference (SIGCOMM '21), pp. 418–432.
+
+DOI: https://doi.org/10.1145/3452296.3472893
+
+Verification: checked against the PDF and the DOI record on Crossref (2026-11-24).
+The PDF is not included here because publication rights are licensed to ACM (© 2021 the owner/author(s); personal or classroom use only). It can be read at:
+https://doi.org/10.1145/3452296.3472893

@@ -1,0 +1,10 @@
+Citation:
+ITU-T, 2019. Physical layer management for digital subscriber line transceivers. Recommendation ITU-T G.997.1 (02/2019). International Telecommunication Union, Geneva.
+
+Link:
+https://www.itu.int/rec/T-REC-G.997.1-201902-I/en
+
+Verification and availability:
+Edition 02/2019 is listed as in force; it covers the configuration, fault and performance management of ADSL and VDSL2 systems (G.992.x and G.993.2). Free from ITU-T, but the ITU web server rejected automated requests; download it from the link in a browser.
+
+Used for: the performance counters and line parameters used by the line manager (ES, SES, FEC corrections, full initializations, SNR margin, ATTNDR, NDR, LATN) in 15-minute and 24-hour intervals (Sections 1, 2.1 and 5.1).

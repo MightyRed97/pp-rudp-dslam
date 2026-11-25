@@ -1,0 +1,9 @@
+Yu, C., Pan, S., Song, W., 2025. Progressive probabilistic retransmission method for reliable satellite-to-ground file transfer in LEO environment. Cluster Computing 28 (16), 1071.
+
+DOI: https://doi.org/10.1007/s10586-025-05786-z
+
+Verification: The DOI record on Crossref confirms the title, authors, venue and year (checked 2026-11-24).
+The full text could not be downloaded automatically (paywalled, or the publisher blocks automated requests).
+
+Abstract (publisher record, link.springer.com article page, retrieved 2026-11-25):
+Existing file transfer protocols for Low Earth Orbit (LEO) satellite-to-ground transmission often suffer from delayed adaptation of retransmission strategies and excessive ineffective retransmissions. To address these challenges, this paper proposes a reliable file transfer method based on progressive probabilistic retransmission. By analyzing the latency distribution of the satellite-to-ground links, we designed an online detection algorithm to perceive real-time link status changes, enabling rapid adjustments to retransmission strategy. Furthermore, we proposed a probabilistic retransmission mechanism that dynamically adapts to payload differences and task progress, thereby reducing ineffective retransmissions caused by inaccurate timeout threshold estimations and improving overall retransmission efficiency. Experimental results demonstrate that, compared with existing protocols, the proposed method reduces transmission time by 4.48%–32.46% and decreases the retransmission rate by 20.32%–83.79%. These results confirm that our approach can promptly detect link status variations, adjust retransmission strategies in real time, and effectively meet the efficiency requirements of satellite-to-ground transmission environments.

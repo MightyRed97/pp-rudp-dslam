@@ -1,0 +1,4 @@
+# files the relay and the command-line clients create while running
+server/data/
+downloads-*/
+node_modules/

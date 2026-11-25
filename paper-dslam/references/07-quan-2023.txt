@@ -1,0 +1,10 @@
+Citation:
+Quan, W., Xu, Z., Liu, M., Cheng, N., Liu, G., Gao, D., Zhang, H., Shen, X., Zhuang, W., 2023. AI-driven packet forwarding with programmable data plane: a survey. IEEE Communications Surveys & Tutorials 25 (1), 762-790.
+
+Link:
+https://doi.org/10.1109/COMST.2022.3217613
+
+Verification and availability:
+Paywalled (IEEE). Verified on 2026-11-24 against the publisher record (Crossref and OpenAlex metadata: authors, title, venue, volume, pages) and the abstract.
+
+Used for: survey of AI-driven packet forwarding on programmable data planes in terms of delay, throughput, security and reliability (Sections 1 and 2.2).

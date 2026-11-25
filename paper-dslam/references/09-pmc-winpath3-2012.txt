@@ -1,0 +1,12 @@
+Citation:
+PMC-Sierra, 2012. WinPath3 (WP3) next generation access systems packet processor: product brief. Document PMC-2110882, Issue 2. PMC-Sierra, Burnaby, BC.
+
+Link:
+Copy distributed by the component distributor LCSC: https://datasheet.lcsc.com/datasheet/pdf/232bad5409f58bfb16d39fc2d87ac94f.pdf?productCode=C1554423 ; product page of the current supplier: https://www.microchip.com/en-us/product/wp3
+
+Verification and availability:
+The two-page brief was read in full. It carries the notice "Proprietary and Confidential to PMC-Sierra and for its customers' internal use", so it is not redistributed here.
+Facts used in the paper, all taken from the brief: two multi-threaded MIPS 34Kc control cores at 650 MHz with individual 64K-I/32K-D caches and a 256-KB or 512-KB L2 cache for one core; up to 12 RISC data-path processors (12 WinGines in the block diagram) with 64 concurrent hardware threads at up to 450 MHz; up to 10 Gbit/s of simplex Ethernet routing or bridging for 64-byte packets (15 Mpps) including classification, policing and shaping; a packet classifier with 32K rules, up to 16K forwarding rules and up to 450 M searches/s; a policing accelerator with dual leaky bucket for up to 64K flows; a 3-level hierarchical shaper with 16K flows and WRED; three 16/32-bit DDR2/3 interfaces at 1200 Mbit/s per pin, 2.5 MB of internal memory and one PCIe v1.1 interface; 8 WinNet interfaces supporting 16x GbE, 8x 2.5GbE or 72x 10/100 SMII/SS-SMII; two 10GbE MACs (XAUI); UTOPIA/POS-PHY L2 and SPI-3; royalty-free data-path software for over 60 protocols with a C-language API; WDS3 reference boards; DSLAM among the wireline target systems; 4.5-9.5 W nominal power.
+Background, not cited in the paper: Wintegra announced the WinPath3 family in February 2009 (65 nm process, up to twelve multi-threaded data-path cores, a 20 Gbit/s hardware classifier); the lower-cost WinPath3 SuperLite (brief PMC-2113379) has six WinGines at up to 400 MHz.
+
+Used for: Sections 1, 2.2, 3.2 (Table 1), 4.2 and 7.2.

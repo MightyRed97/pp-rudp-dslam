@@ -1,0 +1,14 @@
+Lin, W., 2026. KCP: a fast and reliable ARQ protocol, version 2.1.1 [software]. GitHub repository, https://github.com/skywind3000/kcp (accessed 24 November 2026).
+
+URL: https://github.com/skywind3000/kcp
+
+Verification: The GitHub repository page and API confirm the repository (skywind3000/kcp, owner display name "Linwei", location "PRC"), the MIT license and the latest release 2.1.1, published 2026-05-15 (checked 2026-11-24).
+This is software, not a paper: README.md, README.en.md, ikcp.c and ikcp.h on the master branch (v2) and ikcp.c on the v1 branch were read on 2026-11-24.
+
+Excerpts used in the paper (README.en.md and ikcp.c on the master branch, retrieved 2026-11-25):
+README.en.md, line 19: "It can achieve a 30–40% reduction in average latency and up to three times lower maximum delay, costing 10–20% additional bandwidth overhead."
+README.en.md, line 37: "KCP ... uses a more responsive approach in fast mode: the RTO increases by a factor of 1.5x (based on empirical results)".
+README.en.md, line 142: "Turbo Mode: ikcp_nodelay(kcp, 1, 10, 2, 1);"
+ikcp.c, lines 25-40: IKCP_RTO_NDL = 30 (no delay min rto), IKCP_RTO_MIN = 100, IKCP_RTO_DEF = 200, IKCP_WND_SND = 32, IKCP_WND_RCV = 128, IKCP_INTERVAL = 100, IKCP_OVERHEAD = 24.
+ikcp.c, line 1117: the flush routine iterates "for (p = kcp->snd_buf.next; p != &kcp->snd_buf; p = p->next)" over the whole send buffer.
+ikcp.c, lines 1131 and 1135: timeout backoff "segment->rto += _imax_(segment->rto, (IUINT32)kcp->rx_rto);" in normal mode and "segment->rto += step / 2;" with nodelay.
