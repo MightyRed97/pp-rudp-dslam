@@ -1,4 +1,4 @@
-# Network papers
+# pp-rudp-dslam
 
 Two papers on network engineering, and a working implementation of the first one.
 
