@@ -20,11 +20,9 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -88,6 +86,7 @@ public final class ChatClient {
     private static final int REGISTER_EVERY_S = 25, EXPIRES_S = 120, ATTEMPTS = 3;
     private static final double THETA = 0.4;              // Eq. (11)
     private static final long MAX_FILE = 16L << 30;       // 16 GiB
+    private static final String RESUMED = "resumed in a new session";
     private static final AtomicLong NEXT_MESSAGE_ID = new AtomicLong();   // unique across clients
 
     private final String host, user;
@@ -99,7 +98,7 @@ public final class ChatClient {
     private final ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
     private final ConcurrentHashMap<String, BlockingQueue<Sip.Message>> pending = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Long> lastProgress = new ConcurrentHashMap<>();
-    private final Set<String> downloading = Collections.newSetFromMap(new ConcurrentHashMap<String, Boolean>());
+    private final ConcurrentHashMap<String, IrudpEndpoint.Handle> receiving = new ConcurrentHashMap<>();   // sha1 -> session
     private final Map<String, String> answers = lru(256);          // SIP thread only: transfer id -> our SDP answer
     private final Map<String, Boolean> seenMessages = lru(256);    // SIP thread only: Call-IDs of recent MESSAGEs
     private final AtomicInteger cseq = new AtomicInteger(1);
@@ -217,6 +216,11 @@ public final class ChatClient {
     private void register() {
         try {
             Sip.Message r = request("REGISTER", user, null, "", String.valueOf(EXPIRES_S));
+            // Android freezes an app in the background (for example while the file picker is open), so a
+            // refresh can miss its answer: try once more at once before reporting the server as silent
+            if (r == null && Boolean.TRUE.equals(registered) && running) {
+                r = request("REGISTER", user, null, "", String.valueOf(EXPIRES_S));
+            }
             if (!running) return;
             boolean ok = r != null && r.status == 200;
             Boolean before = registered;
@@ -520,27 +524,25 @@ public final class ChatClient {
             reply(m, from, 488, "Not Acceptable Here", null, "");
             return;
         }
-        if (!downloading.add(o.sha1)) {                      // the same file is already on its way
-            reply(m, from, 486, "Busy Here", null, "");
-            return;
-        }
+        // The relay offers a file again only after its last delivery ended, so a session still receiving
+        // that file is dead (it would wait for its idle timeout): end it, and the new one resumes from its blocks
+        IrudpEndpoint.Handle old = receiving.remove(o.sha1);
+        IrudpEndpoint ep = irudp;
+        if (old != null && ep != null) ep.cancel(old, RESUMED);
         String answer = Sdp.build(user, "0.0.0.0", 9, "active", "recvonly", o.name, o.type, o.size, o.sha1, o.transferId);
         answers.put(o.transferId, answer);
         reply(m, from, 200, "OK", "application/sdp", answer);
         String sender = Sip.userOf(m.header("from"));
         final String peer = sender == null ? "?" : sender;
-        if (!submit(() -> download(o, peer))) downloading.remove(o.sha1);
+        submit(() -> download(o, peer));
     }
 
     private void download(Sdp.Offer o, String from) {
-        boolean started = false;
         try {
-            started = startDownload(o, from);
+            startDownload(o, from);
         } catch (RuntimeException e) {
             emit("in:" + o.transferId, false, from, safeName(o.name), cleanMime(o.type), o.size, 0, Segment.segmentsFor(o.size),
                     Transfer.FAILED, "error: " + e.getMessage(), null);
-        } finally {
-            if (!started) downloading.remove(o.sha1);
         }
     }
 
@@ -581,8 +583,9 @@ public final class ChatClient {
             return false;
         }
         final long t0 = System.currentTimeMillis();
+        final IrudpEndpoint.Handle[] self = new IrudpEndpoint.Handle[1];
         emit(key, false, from, name, mime, o.size, 0, total, Transfer.RUNNING, "receiving", null);
-        ep.receive(new InetSocketAddress(server, o.port), o.size, o.sha1, o.transferId, held, new ReceiverCallbacks() {
+        self[0] = ep.receive(new InetSocketAddress(server, o.port), o.size, o.sha1, o.transferId, held, new ReceiverCallbacks() {
             @Override
             public void write(int seq, byte[] src, int off, int len) {
                 try {
@@ -617,14 +620,15 @@ public final class ChatClient {
             public void onDone(boolean ok, String reason) {
                 closeQuietly(out);
                 lastProgress.remove(key);
-                downloading.remove(o.sha1);
+                if (self[0] != null) receiving.remove(o.sha1, self[0]);   // not a newer session for the same file
                 if (!ok) {
                     if ("hash mismatch".equals(reason)) {     // not resumable: its block map says every block is held
                         if (!part.delete()) part.deleteOnExit();
                         if (!map.delete()) map.deleteOnExit();
                     }
-                    emit(key, false, from, name, mime, o.size, 0, total, Transfer.FAILED,
-                            reason + "; it resumes when the server offers it again", null);
+                    emit(key, false, from, name, mime, o.size, 0, total, Transfer.FAILED, RESUMED.equals(reason)
+                            ? "the connection was lost; the transfer goes on below, from the blocks already here"
+                            : reason + "; it resumes when the server offers it again", null);
                     return;
                 }
                 File dest = unique(downloadDir, name);
@@ -634,6 +638,7 @@ public final class ChatClient {
                         String.format(Locale.US, "received in %.1f s", (System.currentTimeMillis() - t0) / 1000.0), result);
             }
         });
+        receiving.put(o.sha1, self[0]);
         return true;
     }
 

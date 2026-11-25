@@ -2,3 +2,13 @@
 server/data/
 downloads-*/
 node_modules/
+
+# the large parts of the offline kit (see offline/README.md); the scripts and tools are kept
+offline/jdk/
+offline/gradle/
+offline/node/
+offline/android-sdk/
+offline/m2repository/
+offline/m2repository-old-*/
+offline/app/
+offline/_work/

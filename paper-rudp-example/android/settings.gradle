@@ -1,5 +1,10 @@
+// ../offline/m2repository, when it is there, holds every dependency of this build (see ../offline/README.md),
+// so that the app can be built without the internet. It is searched first; otherwise the usual
+// repositories are used.
 pluginManagement {
+    def offline = new File(settingsDir, '../offline/m2repository')
     repositories {
+        if (offline.isDirectory()) maven { url = offline.toURI() }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -7,7 +12,9 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    def offline = new File(settingsDir, '../offline/m2repository')
     repositories {
+        if (offline.isDirectory()) maven { url = offline.toURI() }
         google()
         mavenCentral()
     }

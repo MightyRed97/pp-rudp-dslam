@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- the outer layout places the bubble left, right or in the middle (ChatAdapter sets its gravity) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    tools:ignore="UselessParent"
     android:paddingStart="10dp"
     android:paddingTop="3dp"
     android:paddingEnd="10dp"

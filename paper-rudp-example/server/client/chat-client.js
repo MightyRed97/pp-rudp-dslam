@@ -29,7 +29,7 @@ class ChatClient extends EventEmitter {
     this.cseq = 1;
     this.active = new Map();       // transfer id -> session (for tests that abort a transfer)
     this.seenMessages = new Set(); // Call-IDs of recent MESSAGEs: a retransmitted one is answered but shown once
-    this.downloading = new Set();  // SHA-1s of the files being received
+    this.downloading = new Map();  // SHA-1 -> IRUDP session of a file being received
   }
 
   async start() {
@@ -132,7 +132,9 @@ class ChatClient extends EventEmitter {
       if (this.offers && this.offers.has(o.transferId)) { reply(200, 'OK', [['Content-Type', 'application/sdp']], this.offers.get(o.transferId)); return; }
       if (o.proto !== 'UDP/IRUDP' || !o.transferId || !/^[0-9a-f]{40}$/.test(o.sha1 || '') || !Number.isSafeInteger(o.size)
         || o.size < 0 || o.size > MAX_FILE || !(o.port > 0 && o.port < 65536)) { reply(488, 'Not Acceptable Here'); return; }
-      if (this.downloading.has(o.sha1)) { reply(486, 'Busy Here'); return; }   // the same file is already on its way
+      // The relay offers a file again only after its last delivery ended, so a session still receiving that
+      // file is dead (it would wait for its idle timeout): end it, and the new one resumes from its blocks
+      if (this.downloading.has(o.sha1)) this.irudp.abort(this.downloading.get(o.sha1));
       const answer = sip.buildSdp({ user: this.user, ip: '0.0.0.0', port: 9, setup: 'active', direction: 'recvonly', name: o.name,
         type: o.type, size: o.size, sha1: o.sha1, transferId: o.transferId });
       (this.offers = this.offers || new Map()).set(o.transferId, answer);
@@ -154,16 +156,15 @@ class ChatClient extends EventEmitter {
       try { const m = fs.readFileSync(mapFile); if (m.length === held.length) held = new Uint8Array(m); } catch (e) { /* no map yet */ }
     }
     const fd = fs.openSync(part, 'r+');
-    this.downloading.add(o.sha1);
     this.emit('offer', o);
-    this.irudp.connect({ host: this.server, port: o.port, role: S.ROLE.CLIENT_RECEIVES, size: o.size, sha1: o.sha1, transferId: o.transferId, held,
+    const sess = this.irudp.connect({ host: this.server, port: o.port, role: S.ROLE.CLIENT_RECEIVES, size: o.size, sha1: o.sha1, transferId: o.transferId, held,
       writeSegment: (seq, b) => fs.writeSync(fd, b, 0, b.length, seq * S.MSS),
       onBlock: (b, bitmap) => fs.writeFileSync(mapFile, Buffer.from(bitmap)),
       verify: () => sha1OfFile(part) === o.sha1,
       onProgress: (d, n) => this.emit('progress', { name: o.name, done: d, total: n }),
       onDone: (ok, reason) => {
         fs.closeSync(fd);
-        this.downloading.delete(o.sha1);
+        if (this.downloading.get(o.sha1) === sess) this.downloading.delete(o.sha1);   // not a newer session for the file
         if (!ok) {
           if (reason === 'hash mismatch') {                // not resumable: its block map says every block is held
             for (const f of [part, mapFile]) { try { fs.unlinkSync(f); } catch (e) { /* already gone */ } }
@@ -177,6 +178,7 @@ class ChatClient extends EventEmitter {
         fs.renameSync(part, dest); try { fs.unlinkSync(mapFile); } catch (e) { /* none */ }
         this.emit('file', { from: o.from, name: o.name, path: dest, size: o.size });
       } });
+    this.downloading.set(o.sha1, sess);
   }
 }
 

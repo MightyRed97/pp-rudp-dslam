@@ -39,13 +39,25 @@ Type `/to bob` to choose the recipient, then any line to send it as a message. `
 
 ## Build and run the Android app
 
-1. In Android Studio, choose File > Open and select the `android` folder. Android Studio downloads Gradle 8.9 and the Android Gradle plugin 8.7.3 by itself. The project has no `gradlew` script because Android Studio does not need one. To build from a terminal, run `gradle wrapper` once with a local Gradle installation.
+1. In Android Studio, choose File > Open and select the `android` folder. Android Studio downloads Gradle 8.9 and the Android Gradle plugin 8.7.3 by itself. From a terminal, `android\gradlew.bat assembleDebug` (or `./gradlew` on Linux and macOS) builds the APK, given a JDK 17 and the Android SDK.
 2. Start the relay on your computer, then run the app on an emulator. An emulator reaches the computer it runs on at 10.0.2.2, so the default server, `10.0.2.2:5070`, works as it is.
 3. Enter your name (for example `alice`) and press **Connect**. The status line then shows "registered as alice". Enter the recipient (for example `bob`), then type a message, or press **File** to choose a file.
 
 On a real phone, enter the computer's address on your local network, as printed by the server. You also need to allow UDP ports 5070 and 5080 through the computer's firewall.
 
 A simple test setup uses one computer: run the relay, run `node client/cli.js --user bob`, and run the app as alice in the emulator. Messages and files then go both ways. Files received by the app appear in the chat, where you tap one to open it. They are stored in the app's folder `Android/data/com.example.irudpchat/files/Download/`.
+
+The app was tested on an Android 15 (API 35) emulator against the relay, with a lossy link of 2% random loss in front of the relay's IRUDP port:
+- registration through the emulator's NAT, and chat in both directions, including non-Latin text;
+- files in both directions, from 2 MB to 40 MB, with SHA-1 checked on the phone and at the other end; sending goes through the system file picker;
+- a 6 s loss of network (airplane mode) during a download, which the transfer rides through;
+- a 45 s loss of network, after which the relay offers the file again and the download resumes from the blocks already on the phone;
+- rotation and dark mode, with the conversation and the connection kept;
+- opening a received image.
+
+## Running without internet
+
+The [`offline/`](offline/) folder holds a kit for a Windows computer without internet access: a JDK, Gradle, Node.js, every library the build uses, and the app ready to install. With it you can start the relay (`offline\run-server.bat`), install the app (`offline\install-app.bat`), and build and test the app (`offline\build-app.bat`). The large parts are not in the repository: download them from the repository's release, or make them with `offline\tools\make-kit.ps1`. See [`offline/README.md`](offline/README.md).
 
 ## Tests
 
@@ -158,7 +170,7 @@ Every segment starts with a 16-byte header; all fields are big-endian.
 - **No security.** There is no authentication and no encryption, and anyone can register under any name. The relay stores files as they are. Use the example on a test network only.
 - **Small SIP subset.** The example uses only REGISTER, MESSAGE, INVITE, ACK and BYE, over UDP only, with no proxy routing and no digest authentication. It is not meant to work with other SIP software.
 - **Android limits.**
-  - Transfers run only while the app is open; there is no foreground service.
+  - Transfers run only while the app is open; there is no foreground service. Android freezes an app in the background, so messages and files sent to it meanwhile wait at the relay, which delivers them when the app registers again.
   - A chosen file is first copied to the app's cache, because some content providers do not allow random access.
   - Received files stay in the app's own folder.
 - **Relay state.** The relay keeps the online users and the offers in progress in memory. The stored files and the queue of undelivered messages and files survive a restart.
@@ -167,3 +179,4 @@ Every segment starts with a 16-byte header; all fields are big-endian.
 
 - **The link emulator must keep packets in order.** An early version of the test proxy gave each packet its own timer. Node runs timers grouped by their delay, so on Windows, where timers fire about every 15 ms, later packets overtook earlier ones. They overtook them by more than the reordering window of Eq. (5), and about a quarter of all segments were resent for nothing. The proxy now releases packets from a FIFO queue.
 - **The probe can resend a segment that was only late.** After a delay spike longer than the RTO, the probe resends a segment whose first copy is still on its way. When that first copy is acknowledged, the resend time must not become the RACK time, or every segment in flight is marked lost. The sender applies the rule of RFC 8985, Section 6.2, using the echoed send time. A unit test covers this case in both the Node and the Java code.
+- **A second offer of a file means the first session is dead.** The relay offers a file again only after its last delivery to that user has ended. A client still receiving that file is waiting for its 60 s idle timeout, so it ends that session at once and starts the new one, which resumes from the blocks it already holds. On the emulator, after a 45 s loss of network, this skipped 16 to 27 complete blocks instead of sending the whole file again.

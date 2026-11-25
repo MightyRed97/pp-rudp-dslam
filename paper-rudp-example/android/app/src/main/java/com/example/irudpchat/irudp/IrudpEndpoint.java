@@ -159,9 +159,14 @@ public final class IrudpEndpoint {
     }
 
     public void cancel(Handle h) {
+        cancel(h, "cancelled");
+    }
+
+    /** Ends the session; its owner hears reason. */
+    public void cancel(Handle h, String reason) {
         post(() -> {
             Session s = sessions.get(h.connId);
-            if (s != null) close(s, "cancelled");
+            if (s != null) close(s, reason);
         });
     }
 
